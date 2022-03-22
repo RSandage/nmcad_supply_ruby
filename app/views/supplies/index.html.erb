@@ -15,8 +15,11 @@
       <td><%= supply.name %></td>
       <td><%= supply.amount %></td>
       <td><%= link_to 'Show', supply_path(supply) %></td>
+      <td><%= link_to 'Edit', edit_supply_path(supply) %></td>
       <td><%= link_to 'Delete', supply_path(supply), method: :delete %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= link_to 'Create Supply', new_supply_path %>

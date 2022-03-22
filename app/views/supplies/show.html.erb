@@ -2,3 +2,7 @@
 
 <p><strong>Name: </strong><%= @supply.name %></p>
 <p><strong>Amount: </strong><%= @supply.amount %></p>
+
+<%= link_to 'Edit', edit_supply_path(@supply) %> | 
+<%= link_to 'Delete', supply_path(@supply), method: :delete, data: {confirm: "Are you sure?"} %> |
+<%= link_to 'Return to Supplies page', supplies_path %>

@@ -1,7 +1,8 @@
 class SuppliesController < ApplicationController
+  before_action :set_supply, only: [:show, :edit, :destroy, :update]
+
   def show
-    #byebug
-    @supply = Supply.find(params[:id])
+
   end
 
   def index
@@ -13,7 +14,7 @@ class SuppliesController < ApplicationController
   end
 
   def create
-    @supply = Supply.new(params.require(:supply).permit(:name, :amount))
+    @supply = Supply.new(supply_params)
     @supply.save
     if @supply.save
       flash[:notice] = "Supply was created successfully."
@@ -24,13 +25,12 @@ class SuppliesController < ApplicationController
   end
 
   def edit
-    @supply = Supply.find(params[:id])
+
   end
 
   def update
-    @supply = Supply.find(params[:id])
-    @supply.update(params.require(:supply).permit(:name, :amount))
-    if @supply.update(params.require(:supply).permit(:name, :amount))
+    @supply.update(supply_params)
+    if @supply.update(supply_params)
       flash[:message] = "Updated Successfully!"
       redirect_to @supply
     else
@@ -39,9 +39,18 @@ class SuppliesController < ApplicationController
   end
 
   def destroy
-    @supply = Supply.find(params[:id])
     flash[:message] = "#{@supply.name} was successfully deleted."
     @supply.destroy
     redirect_to supplies_path
   end
+end
+
+private
+
+def set_supply
+  @supply = Supply.find(params[:id])
+end
+
+def supply_params
+  params.require(:supply).permit(:name, :amount)
 end
