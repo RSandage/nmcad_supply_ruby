@@ -1,8 +1,20 @@
-<h1>Showing supply details</h1>
+<h1 class="text-center">Showing Supply details</h1>
+<%= flash[:notice]%>
 
-<p><strong>Name: </strong><%= @supply.name %></p>
-<p><strong>Amount: </strong><%= @supply.amount %></p>
-
-<%= link_to 'Edit', edit_supply_path(@supply) %> | 
-<%= link_to 'Delete', supply_path(@supply), method: :delete, data: {confirm: "Are you sure?"} %> |
-<%= link_to 'Return to Supplies page', supplies_path %>
+<div class="container">
+  <div class="card" style="margin: 10% 25%">
+    <div class="card-body">
+      <h5 class="card-title"><%= @supply.name%></h5>
+      <p class="card-text"><%= @supply.amount%></p>
+      <button class="btn btn-outline-primary">
+        <%= link_to 'Edit', edit_supply_path(@supply), class:"link" %>
+      </button>
+      <button class="btn btn-outline-secondary">
+        <%= link_to 'Return to index page', supplies_path, class:"link"%>
+      </button>
+      <button class="btn btn-outline-danger">
+        <%= link_to 'Delete', supply_path(@supply), method: :delete, class:"link" %>
+      </button>
+    </div>
+  </div>
+</div>

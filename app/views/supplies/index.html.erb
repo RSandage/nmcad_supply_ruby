@@ -1,25 +1,21 @@
-<h1>Supplies listing pages</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Amount</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @supplies.each do |supply| %>
-    <tr>
-      <td><%= supply.name %></td>
-      <td><%= supply.amount %></td>
-      <td><%= link_to 'Show', supply_path(supply) %></td>
-      <td><%= link_to 'Edit', edit_supply_path(supply) %></td>
-      <td><%= link_to 'Delete', supply_path(supply), method: :delete %></td>
-    </tr>
+<h1 style="font-size: 5rem; text-align:center" id="library">Supplies</h1>
+<div class="container">
+  <div class="row">
+    <% @supplies.each do |supply|%>
+    <div class="col-md-3">
+      <div class="card" style="margin-bottom: 2rem">
+        <div class="card-body">
+          <h5 class="card-title"><%= supply.name %></h5>
+          <p class="card-text"><%= supply.amount %></p>
+        </div>
+        <div class="card-footer">
+          <%= link_to 'Show', supply_path(supply) %> |
+          <%= link_to 'Edit', edit_supply_path(supply) %> |
+          <%= link_to 'Delete', supply_path(supply), method: :delete %>
+        </div>
+      </div>
+    </div>
     <% end %>
-  </tbody>
-</table>
-
-<%= link_to 'Create Supply', new_supply_path %>
+  </div>
+  <%= link_to 'Create Supply', new_supply_path %>
+</div>
