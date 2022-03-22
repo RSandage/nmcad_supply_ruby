@@ -1,0 +1,15 @@
+<h1>Edit Supply</h1>
+
+<% if @supply.errors.any? %>
+  <% @supply.errors.full_messages.each do |message| %>
+    <p><%= message %></p>
+  <% end %>
+<% end %>
+
+<%= form_with(model: @supply, url: supply_path) do |form| %>
+  <%= form.label :name, "Name:" %>
+  <%= form.text_field :name %>
+  <%= form.label :amount, "Amount:" %>
+  <%= form.text_field :amount %>
+  <%= form.submit "Update Supply" %>
+<% end %>

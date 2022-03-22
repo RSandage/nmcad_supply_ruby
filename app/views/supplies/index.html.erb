@@ -14,7 +14,8 @@
     <tr>
       <td><%= supply.name %></td>
       <td><%= supply.amount %></td>
-      <%# actions will go here %>
+      <td><%= link_to 'Show', supply_path(supply) %></td>
+      <td><%= link_to 'Delete', supply_path(supply), method: :delete %></td>
     </tr>
     <% end %>
   </tbody>
