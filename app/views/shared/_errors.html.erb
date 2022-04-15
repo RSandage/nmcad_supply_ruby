@@ -1,0 +1,14 @@
+<% if obj.errors.any? %>
+<ul class="alert alert-warning alert-dismissible fade show">
+  <h3>The following errors prevented the <%= obj.class %> to be saved</h3>
+  <% obj.errors.full_messages.each do |message| %>
+  <li style="color: red; margin: 1%"><%= message %></li>
+  <% end %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</ul>
+<% end %>
