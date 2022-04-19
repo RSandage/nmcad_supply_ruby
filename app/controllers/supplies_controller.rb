@@ -1,5 +1,6 @@
 class SuppliesController < ApplicationController
   before_action :set_supply, only: [:show, :edit, :destroy, :update]
+  before_action :require_user, except: [:show, :index]
 
   def show
 
