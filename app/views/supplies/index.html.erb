@@ -9,13 +9,19 @@
           <p class="card-text"><%= supply.amount %></p>
         </div>
         <div class="card-footer">
-          <%= link_to 'Show', supply_path(supply) %> |
-          <%= link_to 'Edit', edit_supply_path(supply) %> |
-          <%= link_to 'Delete', supply_path(supply), method: :delete %>
+          <% if logged_in? %>
+            <%= link_to 'Show', supply_path(supply) %> |
+            <%= link_to 'Edit', edit_supply_path(supply) %> |
+            <% if logged_in? && current_user.admin? %>
+            <%= link_to 'Delete', supply_path(supply), method: :delete %>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
     <% end %>
   </div>
-  <%= link_to 'Create Supply', new_supply_path %>
+  <% if logged_in? %>
+    <%= link_to 'Create Supply', new_supply_path %>
+  <% end %>
 </div>
