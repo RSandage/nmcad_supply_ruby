@@ -12,9 +12,11 @@
       <button class="btn btn-outline-secondary">
         <%= link_to 'Return to index page', supplies_path, class:"link"%>
       </button>
+      <% if logged_in? && current_user.admin? %>
       <button class="btn btn-outline-danger">
         <%= link_to 'Delete', supply_path(@supply), method: :delete, class:"link" %>
       </button>
+      <% end %>
     </div>
   </div>
 </div>
