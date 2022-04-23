@@ -7,7 +7,8 @@ class SuppliesController < ApplicationController
   end
 
   def index
-    @supplies = Supply.all
+    @supplies_low = Supply.low_stock
+    @supplies_normal = Supply.normal_stock
   end
 
   def new
