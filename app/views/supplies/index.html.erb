@@ -1,25 +1,7 @@
 <h1 style="font-size: 5rem; text-align:center" id="library">Supplies</h1>
 <div class="container">
   <div class="row">
-    <% @supplies.each do |supply|%>
-    <div class="col-md-3">
-      <div class="card" style="margin-bottom: 2rem">
-        <div class="card-body">
-          <h5 class="card-title"><%= supply.name %></h5>
-          <p class="card-text"><%= supply.amount %></p>
-        </div>
-        <div class="card-footer">
-          <% if logged_in? %>
-            <%= link_to 'Show', supply_path(supply) %> |
-            <%= link_to 'Edit', edit_supply_path(supply) %> |
-            <% if logged_in? && current_user.admin? %>
-            <%= link_to 'Delete', supply_path(supply), method: :delete %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <% end %>
+    <%= render "supply_card" %>
   </div>
   <% if logged_in? %>
     <%= link_to 'Create Supply', new_supply_path %>
