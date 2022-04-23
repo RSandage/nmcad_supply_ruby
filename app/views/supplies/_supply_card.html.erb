@@ -1,0 +1,40 @@
+<% @supplies_low.each do |supply| %>
+  <div class="col-md-3">
+    <div class="card border border-danger", style="margin-bottom: 2rem">
+      <div class="card-body" >
+        <h5 class="card-title"><%= supply.name %></h5>
+        <p class="card-text"><%= supply.amount %></p>
+        <%# <p class="card-text"><%= supply.station_name%>
+      </div>
+      <div class="card-footer">
+        <% if logged_in? %>
+          <%= link_to 'Show', supply_path(supply) %> |
+          <%= link_to 'Edit', edit_supply_path(supply) %> |
+          <% if logged_in? && current_user.admin? %>
+          <%= link_to 'Delete', supply_path(supply), method: :delete %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% @supplies_normal.each do |supply| %>
+  <div class="col-md-3">
+    <div class="card", style="margin-bottom: 2rem">
+      <div class="card-body" >
+        <h5 class="card-title"><%= supply.name %></h5>
+        <p class="card-text"><%= supply.amount %></p>
+      </div>
+      <div class="card-footer">
+        <% if logged_in? %>
+          <%= link_to 'Show', supply_path(supply) %> |
+          <%= link_to 'Edit', edit_supply_path(supply) %> |
+          <% if logged_in? && current_user.admin? %>
+          <%= link_to 'Delete', supply_path(supply), method: :delete %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
