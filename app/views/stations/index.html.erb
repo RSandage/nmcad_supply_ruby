@@ -1,0 +1,22 @@
+<h1 class="text-center">Stations</h1>
+
+<div class="container">
+  <div class="row">
+    <% @stations.each do |station|%>
+    <div class="col-md-3">
+      <div class="card" style="margin-bottom: 2rem">
+        <div class="card-body">
+          <h5 class="card-title"><%= station.name %></h5>
+        </div>
+        <div class="card-footer">
+          <%= link_to 'Show', station_path(station) %> |
+          <%= link_to 'Edit', edit_station_path(station) %> |
+          <%# <%= link_to 'Toggle Admin', edit_user_path(user), method: :toggle(:admin) %>
+          <%= link_to 'Delete', station_path(station), method: :delete %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <%= link_to 'Create New Station', new_station_path %>
+</div>
