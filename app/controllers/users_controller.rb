@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, except: [:show]
 
   def new
     @user = User.new
@@ -19,6 +20,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
@@ -27,9 +29,14 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
+
+  def destroy
+    flash[:message] = "#{@user.username} was successfully deleted."
+    @user.destroy
+    redirect_to users_path
+  end
 end
 
-  
   
   private 
   
@@ -39,4 +46,11 @@ end
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def require_admin
+    if !(logged_in?) && current_user.admin?
+      flash[:alert] = "Only Admin can perform that action"
+      redirect_to root_path
+    end
   end
